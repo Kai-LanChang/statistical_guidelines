@@ -1,5 +1,5 @@
 #This example is made for ozone trend analysis of 
-#the OMI/MLS satellite data  (Ziemke et al., 2006; 2019)
+#the OMI/MLS satellite data 2004-2021 (Ziemke et al., 2006; 2019)
 #Dr Kai-Lan Chang (CIRES & NOAA CSL, 15 Mar 2023)
 #setwd("/Users/kai-lanchang/Dropbox/data")
 library(dichromat)
