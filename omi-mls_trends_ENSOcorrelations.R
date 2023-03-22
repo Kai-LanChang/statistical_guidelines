@@ -9,14 +9,14 @@ library(fields)
 library(quantreg)
 library(ncdf4)
 library(rworldmap)
-newworld =getMap(resolution = "li")
+newworld=getMap(resolution = "li")
 difcol=colorschemes$DarkRedtoBlue.18
 difcol=c('blue 4',difcol,'red 4')
 toar.col=c(rgb(0.2081, 0.1663, 0.5292),rgb(0.3961, 0.3176, 0.8000),
-rgb(0.0123, 0.4213, 0.8802),rgb(0.4941, 0.7647, 0.8980),
-rgb(0.1157, 0.7022, 0.6843),rgb(0.5216, 0.6980, 0.1725),
-rgb(0.9968, 0.7513, 0.2325),rgb(1.0000, 0.4863, 0.0000),
-rgb(0.8000, 0.3176, 0.3176),rgb(0.6980, 0.1725, 0.1725))
+  rgb(0.0123, 0.4213, 0.8802),rgb(0.4941, 0.7647, 0.8980),
+  rgb(0.1157, 0.7022, 0.6843),rgb(0.5216, 0.6980, 0.1725),
+  rgb(0.9968, 0.7513, 0.2325),rgb(1.0000, 0.4863, 0.0000),
+  rgb(0.8000, 0.3176, 0.3176),rgb(0.6980, 0.1725, 0.1725))
 
 ##moving block bootstrap function
 mbfun=function(formula,data,tau){
@@ -48,7 +48,7 @@ lon=seq(-177.5, by=5, length=72)
 #=========================================================
 #enso correlations and trends
 #=========================================================
-dt=sat[25,12,] #lon -57.5W and lat 2.5S
+dt=sat[25,12,] #lon 57.5W and lat 2.5S
 dt=data.frame(cbind(o3=dt, year=c(rep(2004,3),rep(seq(2005,2021),each=12)), month=c(seq(10,12), rep(1:12, ny-1)), ind=1:length(dt)))
 seasonality=predict(lm(o3~sin(2*pi*month/12)+cos(2*pi*month/12)+sin(2*pi*month/6)+cos(2*pi*month/6), data=dt), newdata=data.frame(month=1:12))
 dt=merge(dt, data.frame(month=1:12, o3d=seasonality), by="month")
@@ -102,12 +102,12 @@ print(paste(100*j/24, "% complete", sep=""))
 }
 
 #maximum enso correlations & trends
-lag_fn = function(x, k=1, pad=NA){
-  if(k == 0)
+lag_fn=function(x, k=1, pad=NA){
+  if(k==0)
     return(x)
   nas <- rep(pad, min(length(x), abs(k)))
-  if(k < 0)
-    c(tail(x, k), nas) else c(nas, head(x, -k))
+  if(k<0)
+    c(tail(x, k),nas) else c(nas, head(x,-k))
 }
 
 op_enso=matrix(0,nrow=72,ncol=24)
@@ -334,6 +334,4 @@ sum(freq[9:12])/(72*24)
 #pt=(op_slope-op0_slope)/op0_slope
 #coord=which(pt == min(pt), arr.ind=TRUE)
 #dt=sat[coord[1],coord[2],]
-
-
 
