@@ -27,7 +27,7 @@ mbfun=function(formula,data,tau){
 
 set.seed(2013)
 fit=coef(rq(yd~x, data=mlo, tau=0.5))*12 #intercept and slope
-op = t(replicate(1000, mbfun(formula=yd~x,data=mlo,tau=0.5)))
+op=t(replicate(1000, mbfun(formula=yd~x,data=mlo,tau=0.5)))
 fit_se=t(apply(op, 2, sd, na.rm=TRUE))*12 #MBB standard error for intercept and slope
 fit_pv=2*pt(q=abs(fit/fit_se), df=nrow(mlo)-2, lower.tail=FALSE) #MBB p value for intercept and slop
 #multiple quantiles 
