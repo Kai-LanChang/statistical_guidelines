@@ -26,8 +26,8 @@ mbfun=function(formula,data,tau){
  nblocks=ceiling(n/b)
  blocks=lapply(seq_len(n-b+1), function(i) seq(i, i+b-1))
  bn=sample(1:length(blocks),nblocks,replace=T)
- sampdata=data[unlist(blocks[bn]), ]  
- mod=rq(formula, data=sampdata, tau=tau)
+ samp_data=data[unlist(blocks[bn]), ]  
+ mod=rq(formula, data=samp_data, tau=tau)
  coef(mod)
 }
 
