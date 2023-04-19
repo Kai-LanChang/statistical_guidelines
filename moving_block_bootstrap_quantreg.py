@@ -1,4 +1,4 @@
-#This code is prepared by Nikllas Selke
+#This code is maintained by Niklas Selke
 import numpy as np
 import pandas as pd
 import scipy.stats
